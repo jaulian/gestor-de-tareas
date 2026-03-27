@@ -1,5 +1,11 @@
 package com.ieselpla.primer_dam;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -121,5 +127,16 @@ public class GestorTareas {
             }
         }
         return null; // No encontrada
+    }
+
+    public void guardarEnFichero(String ruta) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(ruta))) {
+            for (Tarea tarea : this.tareas) {
+                bw.write(tarea.toString());
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Error al escribir en el fichero: " + e.getMessage());
+        }
     }
 }
