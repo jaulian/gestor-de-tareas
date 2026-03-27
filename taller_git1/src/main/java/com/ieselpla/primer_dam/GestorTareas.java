@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 /**
  * Gestiona una colección de tareas.
- * TODO (rama feature/filtrado): añadir métodos listarPendientes() y listarCompletadas()
- * TODO (rama feature/guardar-fichero): añadir método guardarEnFichero(String ruta)
+ * TODO (rama feature/filtrado): añadir métodos listarPendientes() y
+ * listarCompletadas()
+ * TODO (rama feature/guardar-fichero): añadir método guardarEnFichero(String
+ * ruta)
  */
 public class GestorTareas {
 
@@ -20,11 +22,41 @@ public class GestorTareas {
     /**
      * Añade una nueva tarea al gestor.
      */
-    public void añadirTarea(String titulo, String descripcion) {
-        Tarea nueva = new Tarea(proximoId, titulo, descripcion);
+    public void añadirTarea(String titulo, String descripcion, Prioridad prioridad) {
+        Tarea nueva = new Tarea(proximoId, titulo, descripcion, prioridad);
         tareas.add(nueva);
         proximoId++;
         System.out.println("✔ Tarea añadida con ID " + nueva.getId());
+    }
+
+    public void listarPendientes() {
+        System.out.println("\n=== TAREAS PENDIENTES ===");
+        boolean hayPendientes = false;
+        for (Tarea t : tareas) {
+            if (!t.isCompletada()) {
+                System.out.println(t);
+                hayPendientes = true;
+            }
+        }
+        if (!hayPendientes) {
+            System.out.println("No hay tareas pendientes.");
+        }
+        System.out.println("======================");
+    }
+
+    public void listarCompletadas() {
+        System.out.println("\n=== TAREAS COMPLETADAS ===");
+        boolean hayCompletadas = false;
+        for (Tarea t : tareas) {
+            if (t.isCompletada()) {
+                System.out.println(t);
+                hayCompletadas = true;
+            }
+        }
+        if (!hayCompletadas) {
+            System.out.println("No hay tareas completadas.");
+        }
+        System.out.println("======================");
     }
 
     /**
@@ -82,7 +114,6 @@ public class GestorTareas {
     // -------------------------------------------------------
     // Método privado auxiliar
     // -------------------------------------------------------
-
     private Tarea buscarPorId(int id) {
         for (Tarea t : tareas) {
             if (t.getId() == id) {

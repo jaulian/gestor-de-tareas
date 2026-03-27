@@ -40,7 +40,16 @@ public final class App {
                     String titulo = scanner.nextLine();
                     System.out.print("Descripción: ");
                     String descripcion = scanner.nextLine();
-                    gestor.añadirTarea(titulo, descripcion);
+                    
+                    Prioridad prioridad = null;
+                    while (prioridad == null) {
+                        System.out.print("Prioridad (ALTA, MEDIA o BAJA): ");
+                        try {
+                            prioridad = Prioridad.valueOf(scanner.nextLine().trim().toUpperCase());
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Prioridad no válida. Introduce ALTA, MEDIA o BAJA.");
+                        }
+                    }
                     break;
 
                 case 2:
@@ -66,6 +75,14 @@ public final class App {
                         System.out.println("✘ ID no válido.");
                     }
                     break;
+                case 5:
+                    System.out.println("Tareas pendiendtes:");
+                    gestor.listarPendientes();
+                    break;
+                case 6:
+                    System.out.println("Tareas completadas");
+                    gestor.listarCompletadas();
+                    break;
 
                 case 0:
                     System.out.println("¡Hasta luego!");
@@ -85,11 +102,13 @@ public final class App {
      * miembros de la pareja en el Bloque 3 del taller.
      */
     private static void mostrarMenu() {
-        System.out.println("=== OPCIONES DISPONIBLES ===\n");
-        System.out.println("1. Nueva tarea");
-        System.out.println("2. Listar tareas");
-        System.out.println("3. Completar tarea");
-        System.out.println("4. Eliminar tarea");
-        System.out.println("0. Salir");
+        System.out.println("\n--- MENÚ ---");
+        System.out.println("1. ✏️  Nueva tarea");
+        System.out.println("2. 📋  Listar tareas");
+        System.out.println("3. ✅  Completar tarea");
+        System.out.println("4. ✖  Eliminar tarea");
+        System.out.println("5. 🤔  Listar tareas pendientes");
+        System.out.println("6. 🏋  Listar tareas completadas");
+        System.out.println("0. 🚐  Salir");
     }
 }
