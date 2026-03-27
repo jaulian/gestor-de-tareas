@@ -40,7 +40,7 @@ public final class App {
                     String titulo = scanner.nextLine();
                     System.out.print("Descripción: ");
                     String descripcion = scanner.nextLine();
-                    
+
                     Prioridad prioridad = null;
                     while (prioridad == null) {
                         System.out.print("Prioridad (ALTA, MEDIA o BAJA): ");
@@ -83,6 +83,10 @@ public final class App {
                     System.out.println("Tareas completadas");
                     gestor.listarCompletadas();
                     break;
+                case 7:
+                    System.out.println("Guardan en fichero");
+                    String ruta = scanner.nextLine();
+                    gestor.guardarEnFichero(ruta);
 
                 case 0:
                     System.out.println("¡Hasta luego!");
@@ -109,6 +113,7 @@ public final class App {
         System.out.println("4. ✖  Eliminar tarea");
         System.out.println("5. 🤔  Listar tareas pendientes");
         System.out.println("6. 🏋  Listar tareas completadas");
+        System.out.println("7. Guardar en fichero");
         System.out.println("0. 🚐  Salir");
     }
 }
