@@ -50,6 +50,9 @@ public class GestorTareas {
     public void completarTarea(int id) {
         Tarea encontrada = buscarPorId(id);
         // ¿Ves el problema? Falta validar que 'encontrada' no sea null
+        if (encontrada == null) {
+            throw new NullPointerException("ID no existe. En completar tarea");
+        }
         encontrada.setCompletada(true);
         System.out.println("✔ Tarea " + id + " marcada como completada.");
     }
