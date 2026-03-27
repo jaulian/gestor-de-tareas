@@ -40,7 +40,16 @@ public final class App {
                     String titulo = scanner.nextLine();
                     System.out.print("Descripción: ");
                     String descripcion = scanner.nextLine();
-                    gestor.añadirTarea(titulo, descripcion);
+                    
+                    Prioridad prioridad = null;
+                    while (prioridad == null) {
+                        System.out.print("Prioridad (ALTA, MEDIA o BAJA): ");
+                        try {
+                            prioridad = Prioridad.valueOf(scanner.nextLine().trim().toUpperCase());
+                        } catch (IllegalArgumentException e) {
+                            System.out.println("Prioridad no válida. Introduce ALTA, MEDIA o BAJA.");
+                        }
+                    }
                     break;
 
                 case 2:
