@@ -7,8 +7,8 @@ import java.util.Scanner;
  * Menú interactivo por consola.
  *
  * TODO (conflicto intencionado): ambos miembros de la pareja deberán
- *      modificar el método mostrarMenu() en sus ramas, lo que generará
- *      un conflicto de merge en el Bloque 3 del taller.
+ * modificar el método mostrarMenu() en sus ramas, lo que generará
+ * un conflicto de merge en el Bloque 3 del taller.
  */
 public final class App {
     private App() {
@@ -85,7 +85,7 @@ public final class App {
      * miembros de la pareja en el Bloque 3 del taller.
      */
     private static void mostrarMenu() {
-        System.out.println("\n--- MENÚ ---");
+        System.out.println("=== OPCIONES DISPONIBLES ===\n");
         System.out.println("1. Nueva tarea");
         System.out.println("2. Listar tareas");
         System.out.println("3. Completar tarea");
